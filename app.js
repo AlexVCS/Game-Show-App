@@ -15,7 +15,10 @@ const phrases = [
 ];
 
 function getRandomPhraseAsArray(arr) {
-    
+    for (let i = 0; i < phrases.length; i++) {
+        phrases[i] = phrases[i].split(',');
+    }
+    return freshPhrases;
 };
 
 // function addPhraseToDisplay(arr){}
@@ -23,5 +26,7 @@ function getRandomPhraseAsArray(arr) {
 
 // const phraseArray = getRandomPhraseAsArray(phrases);
 // addPhrasetoDisplay(phraseArray);
+
+// function checkLetter () {}
 
 // function checkWin() {}
