@@ -39,11 +39,11 @@ function addPhraseToDisplay(arr) {
         
          const phraseArray = getRandomPhraseAsArray(phrase);
          addPhrasetoDisplay(phraseArray);
-        }
+        };
 
 // function checkLetter () {
 //     if () {}
 //     else () {}
 // }
 
-// function checkWin() {}
+// function checkWin() {};
