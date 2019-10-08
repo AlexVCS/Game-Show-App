@@ -20,17 +20,30 @@ function getRandomPhraseAsArray(arr) {
     for (let i = 0; i < arr.length; i++) {
         arr[i] = arr[i].split('');
     }
+
+    console.log(randomPhrase);
     return freshPhrases;
+    
 };
 
 function addPhraseToDisplay(arr) {
-    for ()
-}
-    
+        randomPhrase(arr);
+        let characters = randomPhrase(arr);
+        for (let i = 0; i < randomPhrase.length; i++) {
+            console.log(randomPhrase[i]);
+            
+         let ul = document.getElementsByTagName('ul')[0];
+         let li = document.createElement('li');
+         li.textContent = characters.value;    
+         ul.appendChild(li);
+        
+         const phraseArray = getRandomPhraseAsArray(phrase);
+         addPhrasetoDisplay(phraseArray);
+        }
 
-// const phraseArray = getRandomPhraseAsArray(phrases);
-// addPhrasetoDisplay(phraseArray);
-
-// function checkLetter () {}
+// function checkLetter () {
+//     if () {}
+//     else () {}
+// }
 
 // function checkWin() {}
