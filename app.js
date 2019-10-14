@@ -1,8 +1,9 @@
 const keyboard = document.getElementById('qwerty');
 const word = document.getElementById('phrase');
+const reset = document.querySelector('.btn__reset');
 const missed = 0;
 
-document.querySelector('.btn__reset').addEventListener('click', () => {
+reset.addEventListener('click', () => {
     document.getElementById('overlay').style.display = 'none';
 });
 
@@ -14,19 +15,23 @@ const phrases = [
     'Mamey Ice Cream'
 ];
 
-function getRandomPhraseAsArray(arr) {
+// return a random phrase from the array
+const getRandomPhraseAsArray = arr => {
+    
     const randomPhrase = arr[Math.floor(Math.random() * arr.length)];
 
     for (let i = 0; i < arr.length; i++) {
         arr[i] = arr[i].split('');
     }
 
-    console.log(randomPhrase);
-    return freshPhrases;
-    
+    return 
 };
 
-function addPhraseToDisplay(arr) {
+getRandomPhraseAsArray(phrases);
+
+
+
+const addPhraseToDisplay = arr => {
         randomPhrase(arr);
         let characters = randomPhrase(arr);
         for (let i = 0; i < randomPhrase.length; i++) {
@@ -34,16 +39,28 @@ function addPhraseToDisplay(arr) {
             
          let ul = document.getElementsByTagName('ul')[0];
          let li = document.createElement('li');
-         li.textContent = characters.value;    
-         ul.appendChild(li);
-        
-         const phraseArray = getRandomPhraseAsArray(phrase);
-         addPhrasetoDisplay(phraseArray);
-        };
+         li.textContent = characters.value;
 
-// function checkLetter () {
-//     if () {}
-//     else () {}
-// }
+         if (li.textContent === ' ') {
+             li.className = 'space';
+         } else {
+             li.className = 'letter';
+         }
+
+         ul.appendChild(li);
+
+         const phraseArray = getRandomPhraseAsArray(characters);
+         addPhrasetoDisplay(phrases);
+        };
+    }
+
+// const checkLetter = button => {
+//    checkLetter = document.getElementsByName(li);
+//    const match = null;
+//    for (let i = 0; i < )
+
+// keyboard.addEventListener('click', () => {
+
+// });
 
 // function checkWin() {};
