@@ -5,8 +5,9 @@ const missed = 0;
 
 reset.addEventListener('click', () => {
     document.getElementById('overlay').style.display = 'none';
-    const phraseArray = getRandomPhraseAsArray(phrase);
-    addPhrasetoDisplay(phraseArray);
+    // **** Moved this variable and function call inside of here. ****
+    const phraseArray = getRandomPhraseAsArray(phrases);
+    addPhraseToDisplay(phraseArray);
 });
 
 const phrases = [
@@ -19,22 +20,17 @@ const phrases = [
 
 // return a random phrase from the array
 const getRandomPhraseAsArray = arr => {
-    
     const randomPhrase = arr[Math.floor(Math.random() * arr.length)];
-
-    return randomPhrase.split('');
+   return randomPhrase.split('');
 };
 
-getRandomPhraseAsArray(phrases);
-
-
-
 const addPhraseToDisplay = arr => {
-        randomPhrase(arr);
+        // **** changed this to loop through passed in arr ****
         for (let i = 0; i < arr.length; i++) {
-            
+
          let ul = document.getElementsByTagName('ul')[0];
          let li = document.createElement('li');
+         // *** Set the textContent to the letter/space in the index position of array
          li.textContent = arr[i];
 
          if (li.textContent === ' ') {
@@ -45,19 +41,27 @@ const addPhraseToDisplay = arr => {
 
          ul.appendChild(li);
 
+
         };
     }
 
+    const checkLetter = button => {
+        // **** this can't be the same variable name as the function: **** //
+        // checkLetter = document.getElementsByName(li);
+        let match = null;
+        for (let i = 0; i < randomPhrase.value; i++) {
+            if (button === checkLetter) {
+                li.className= 's how';
+            } else {
+                button.textContent= match;
+            }
+        }
+    };
+
 // const checkLetter = button => {
-//    grabLi = document.getElementsByName(li);
-//    let match = null;
-//    for (let i = 0; i < randomPhrase.value; i++) {
-//        if button === checkLetter {
-//            li.className= 'show';
-//        } else {
-//            button.textContent= match;
-//        }
-//    }
+//    checkLetter = document.getElementsByName(li);
+//    const match = null;
+//    for (let i = 0; i < )
 
 // keyboard.addEventListener('click', () => {
 
