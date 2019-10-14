@@ -5,7 +5,6 @@ const missed = 0;
 
 reset.addEventListener('click', () => {
     document.getElementById('overlay').style.display = 'none';
-    // **** Moved this variable and function call inside of here. ****
     const phraseArray = getRandomPhraseAsArray(phrases);
     addPhraseToDisplay(phraseArray);
 });
@@ -25,12 +24,10 @@ const getRandomPhraseAsArray = arr => {
 };
 
 const addPhraseToDisplay = arr => {
-        // **** changed this to loop through passed in arr ****
         for (let i = 0; i < arr.length; i++) {
 
          let ul = document.getElementsByTagName('ul')[0];
          let li = document.createElement('li');
-         // *** Set the textContent to the letter/space in the index position of array
          li.textContent = arr[i];
 
          if (li.textContent === ' ') {
