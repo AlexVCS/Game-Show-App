@@ -24,7 +24,7 @@ const getRandomPhraseAsArray = arr => {
         arr[i] = arr[i].split('');
     }
 
-    return 
+    return randomPhrase;
 };
 
 getRandomPhraseAsArray(phrases);
