@@ -46,16 +46,16 @@ const addPhraseToDisplay = arr => {
     }
 
     const checkLetter = button => {
-        // **** this can't be the same variable name as the function: **** //
-        // checkLetter = document.getElementsByName(li);
+        let letters = document.getElementsByName(li);
         let match = null;
-        for (let i = 0; i < randomPhrase.value; i++) {
-            if (button === checkLetter) {
-                li.className= 's how';
-            } else {
+        for (let i = 0; i < randomPhrase.length; i++) {
+            if (button === randomPhrase[i]) {
+                li.classList.add= 'show';
+            } else (button !== randomPhrase[i]) {
                 button.textContent= match;
             }
         }
+        return match;
     };
 
 // const checkLetter = button => {
