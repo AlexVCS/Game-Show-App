@@ -5,6 +5,8 @@ const missed = 0;
 
 reset.addEventListener('click', () => {
     document.getElementById('overlay').style.display = 'none';
+    const phraseArray = getRandomPhraseAsArray(phrase);
+    addPhrasetoDisplay(phraseArray);
 });
 
 const phrases = [
@@ -29,13 +31,11 @@ getRandomPhraseAsArray(phrases);
 
 const addPhraseToDisplay = arr => {
         randomPhrase(arr);
-        let characters = randomPhrase(arr);
-        for (let i = 0; i < randomPhrase.length; i++) {
-            console.log(randomPhrase[i]);
+        for (let i = 0; i < arr.length; i++) {
             
          let ul = document.getElementsByTagName('ul')[0];
          let li = document.createElement('li');
-         li.textContent = characters.value;
+         li.textContent = arr[i];
 
          if (li.textContent === ' ') {
              li.className = 'space';
@@ -45,21 +45,19 @@ const addPhraseToDisplay = arr => {
 
          ul.appendChild(li);
 
-         const phraseArray = getRandomPhraseAsArray(characters);
-         addPhrasetoDisplay(phrases);
         };
     }
 
-const checkLetter = button => {
-   checkLetter = document.getElementsByName(li);
-   let match = null;
-   for (let i = 0; i < randomPhrase.value; i++) {
-       if button === checkLetter {
-           li.className= 's how';
-       } else {
-           button.textContent= match;
-       }
-   }
+// const checkLetter = button => {
+//    grabLi = document.getElementsByName(li);
+//    let match = null;
+//    for (let i = 0; i < randomPhrase.value; i++) {
+//        if button === checkLetter {
+//            li.className= 'show';
+//        } else {
+//            button.textContent= match;
+//        }
+//    }
 
 // keyboard.addEventListener('click', () => {
 
