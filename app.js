@@ -20,11 +20,7 @@ const getRandomPhraseAsArray = arr => {
     
     const randomPhrase = arr[Math.floor(Math.random() * arr.length)];
 
-    for (let i = 0; i < arr.length; i++) {
-        arr[i] = arr[i].split('');
-    }
-
-    return randomPhrase;
+    return randomPhrase.split('');
 };
 
 getRandomPhraseAsArray(phrases);
@@ -54,10 +50,16 @@ const addPhraseToDisplay = arr => {
         };
     }
 
-// const checkLetter = button => {
-//    checkLetter = document.getElementsByName(li);
-//    const match = null;
-//    for (let i = 0; i < )
+const checkLetter = button => {
+   checkLetter = document.getElementsByName(li);
+   let match = null;
+   for (let i = 0; i < randomPhrase.value; i++) {
+       if button === checkLetter {
+           li.className= 's how';
+       } else {
+           button.textContent= match;
+       }
+   }
 
 // keyboard.addEventListener('click', () => {
 
