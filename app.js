@@ -3,6 +3,7 @@ const word = document.getElementById('phrase');
 const reset = document.querySelector('.btn__reset');
 const missed = 0;
 
+// listens for start button presses
 reset.addEventListener('click', () => {
     document.getElementById('overlay').style.display = 'none';
     const phraseArray = getRandomPhraseAsArray(phrases);
@@ -20,9 +21,10 @@ const phrases = [
 // return a random phrase from the array
 const getRandomPhraseAsArray = arr => {
     const randomPhrase = arr[Math.floor(Math.random() * arr.length)];
-   return randomPhrase.split('');
+    return randomPhrase.split('');
 };
 
+// add letters of a string to the displaay
 const addPhraseToDisplay = arr => {
         for (let i = 0; i < arr.length; i++) {
 
@@ -37,31 +39,33 @@ const addPhraseToDisplay = arr => {
          }
 
          ul.appendChild(li);
-
-
         };
     }
 
-    const checkLetter = button => {
-        let letters = document.getElementsByName(li);
+// checks if a letter is in the phrase
+const checkLetter = button => {
+        let letters = document.getElementsByClassName('letter');
         let match = null;
-        for (let i = 0; i < randomPhrase.length; i++) {
-            if (button === randomPhrase[i]) {
+        for (let i = 0; i < letters.length; i++) {
+            if (letters[i].textContent.toLowerCase() === button) {
                 li.classList.add= 'show';
-            } else (button !== randomPhrase[i]) {
+                console.log('true');
+            } else {
                 button.textContent= match;
+                return match;
+                console.log('false');
             }
         }
-        return match;
     };
 
-// const checkLetter = button => {
-//    checkLetter = document.getElementsByName(li);
-//    const match = null;
-//    for (let i = 0; i < )
-
-// keyboard.addEventListener('click', () => {
-
+// listens for onscreen keyboard clicks
+// keyboard.addEventListener('click', (e) => {
+//     if (button)
 // });
 
-// function checkWin() {};
+// check if you've been victorious or not!
+// const checkWin = () => {
+//     const letterLi = document.getElementsByClassName('.letter');
+//     const showLi = document.getElementsByClassName('.show');
+    
+// };
