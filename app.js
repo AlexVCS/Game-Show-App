@@ -71,7 +71,8 @@ keyboard.addEventListener('click', (event) => {
 
     // pass the button to the checkLetter function
     let letterFound = checkLetter('BUTTON');
-    let hearts = document.querySelectorAll('img');
+
+    let hearts = document.getElementsByClassName('tries');
 
     // Increase the missed variable by one when the wrong letter is guessed
     if (letterFound === null) {
