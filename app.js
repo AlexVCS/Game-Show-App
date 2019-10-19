@@ -1,11 +1,14 @@
 const keyboard = document.getElementById('qwerty');
 const word = document.getElementById('phrase');
 const reset = document.querySelector('.btn__reset');
-const missed = 0;
+const showLi = document.getElementsByClassName('.show');
+const startScreen = document.getElementById('overlay');
+let letters = document.getElementsByClassName('letter');
+let missed = 0;
 
 // listens for start button presses
 reset.addEventListener('click', () => {
-    document.getElementById('overlay').style.display = 'none';
+    startScreen.style.display = 'none';
     const phraseArray = getRandomPhraseAsArray(phrases);
     addPhraseToDisplay(phraseArray);
 });
@@ -22,7 +25,7 @@ const phrases = [
 const getRandomPhraseAsArray = arr => {
     const randomPhrase = arr[Math.floor(Math.random() * arr.length)];
     return randomPhrase.split('');
-};
+}
 
 // add letters of a string to the displaay
 const addPhraseToDisplay = arr => {
@@ -39,33 +42,58 @@ const addPhraseToDisplay = arr => {
          }
 
          ul.appendChild(li);
-        };
+        }
     }
 
 // checks if a letter is in the phrase
 const checkLetter = button => {
-        let letters = document.getElementsByClassName('letter');
+
         let match = null;
         for (let i = 0; i < letters.length; i++) {
             if (letters[i].textContent.toLowerCase() === button) {
-                li.classList.add= 'show';
-                console.log('true');
+                letters[i].classList.add('show');
+                match = true;
             } else {
-                button.textContent= match;
-                return match;
-                console.log('false');
+                match = null;
             }
         }
-    };
+        return match;
+    }
 
 // listens for onscreen keyboard clicks
-// keyboard.addEventListener('click', (e) => {
-//     if (button)
-// });
+keyboard.addEventListener('click', (event) => {
+    if (event.target.tagName === 'BUTTON') {
+        event.target.disabled = true;
+        event.target.classList.add('chosen');
+        checkLetter(event.target.textContent);
+    }
+});
+
+    // pass the button to the checkLetter function
+    let letterFound = checkLetter('BUTTON');
+    let hearts = document.querySelectorAll('img');
+
+    // Increase the missed variable by one when the wrong letter is guessed
+    if (letterFound === null) {
+        missed += 1;
+    // remove a heart from the scoreboard, add lost heart
+        hearts -1;    
+    }
+    
 
 // check if you've been victorious or not!
-// const checkWin = () => {
-//     const letterLi = document.getElementsByClassName('.letter');
-//     const showLi = document.getElementsByClassName('.show');
-    
-// };
+
+const checkWin = () => {
+    let showLI = document.getElementsByClassName('show');
+        if (letters.length === showLI.lenth) {
+            startScreen.classList.add('win');
+            startScreen.textContent = 'Congrats, you have won!!'
+            startScreen.style.display = 'flex';
+        }
+
+        if (missed > 4) {
+            startScreen.classList.add('lose');
+            startScreen.textContent = 'Awww no, you lost this time :('
+            startScreen.style.display = 'flex';
+        }
+}
