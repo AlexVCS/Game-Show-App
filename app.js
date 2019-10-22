@@ -5,6 +5,7 @@ const showLi = document.getElementsByClassName('.show');
 const startScreen = document.getElementById('overlay');
 let letters = document.getElementsByClassName('letter');
 let missed = 0;
+// let letterFound= 'false';
 
 // listens for start button presses
 reset.addEventListener('click', () => {
@@ -53,34 +54,28 @@ const checkLetter = button => {
             if (letters[i].textContent.toLowerCase() === button) {
                 letters[i].classList.add('show');
                 match = true;
-            } else {
-                match = null;
             }
         }
         return match;
     }
+
+    let hearts = document.querySelectorAll('img');
 
 // listens for onscreen keyboard clicks
 keyboard.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
         event.target.disabled = true;
         event.target.classList.add('chosen');
-        checkLetter(event.target.textContent);
+        // pass the button to the checkLetter function
+        let letterFound = checkLetter(event.target.textContent);
+         // Increase the missed variable by one when the wrong letter is guessed
+        if (letterFound === null) {
+            missed += 1; 
+        // remove a heart from the scoreboard, add lost heart
+            hearts[missed].src = "images/lostHeart.png";
     }
-});
-
-    // pass the button to the checkLetter function
-    let letterFound = checkLetter('BUTTON');
-
-    let hearts = document.getElementsByClassName('tries');
-
-    // Increase the missed variable by one when the wrong letter is guessed
-    if (letterFound === null) {
-        missed += 1;
-    // remove a heart from the scoreboard, add lost heart
-        hearts -1;    
     }
-    
+});  
 
 // check if you've been victorious or not!
 
@@ -92,9 +87,13 @@ const checkWin = () => {
             startScreen.style.display = 'flex';
         }
 
-        if (missed > 4) {
+        if (missed >= 5) {
             startScreen.classList.add('lose');
             startScreen.textContent = 'Awww no, you lost this time :('
             startScreen.style.display = 'flex';
         }
+}
+
+const gameReset = () => {
+
 }
