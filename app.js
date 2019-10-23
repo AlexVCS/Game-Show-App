@@ -4,8 +4,8 @@ const reset = document.querySelector('.btn__reset');
 const showLi = document.getElementsByClassName('.show');
 const startScreen = document.getElementById('overlay');
 let letters = document.getElementsByClassName('letter');
+let hearts = document.querySelectorAll('img');
 let missed = 0;
-// let letterFound= 'false';
 
 // listens for start button presses
 reset.addEventListener('click', () => {
@@ -59,8 +59,6 @@ const checkLetter = button => {
         return match;
     }
 
-    let hearts = document.querySelectorAll('img');
-
 // listens for onscreen keyboard clicks
 keyboard.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
@@ -68,32 +66,34 @@ keyboard.addEventListener('click', (event) => {
         event.target.classList.add('chosen');
         // pass the button to the checkLetter function
         let letterFound = checkLetter(event.target.textContent);
-         // Increase the missed variable by one when the wrong letter is guessed
         if (letterFound === null) {
-            missed += 1; 
         // remove a heart from the scoreboard, add lost heart
             hearts[missed].src = "images/lostHeart.png";
-    }
-    }
+        // Increase the missed variable by one when the wrong letter is guessed
+            missed += 1; 
+    }}
+    checkWin();   
 });  
 
 // check if you've been victorious or not!
 
 const checkWin = () => {
     let showLI = document.getElementsByClassName('show');
-        if (letters.length === showLI.lenth) {
+        if (letters.length === showLI.length) {
             startScreen.classList.add('win');
             startScreen.textContent = 'Congrats, you have won!!'
+            startScreen.style.fontSize = 'x-large';
             startScreen.style.display = 'flex';
+            return true;
         }
-
+        
         if (missed >= 5) {
             startScreen.classList.add('lose');
             startScreen.textContent = 'Awww no, you lost this time :('
+            startScreen.style.fontSize = 'x-large';
             startScreen.style.display = 'flex';
+            return true;
         }
+        return false;
 }
 
-const gameReset = () => {
-
-}
